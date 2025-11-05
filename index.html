@@ -1,7 +1,40 @@
 <!doctype html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="/assets/site.css">
-<title>samciero.github.io</title>
-<h1>It works.</h1>
-<p>Deployed from Git to GitHub Pages.</p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/theme.js" defer></script>
+  <title>Home • SamCiero</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/" aria-current="page">Home</a>
+      <!-- Add more links when pages exist, e.g.:
+      <a href="/about/">About</a>
+      <a href="/contact/">Contact</a>
+      -->
+    </nav>
+    <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
+  </header>
+
+  <main>
+    <h1>Welcome</h1>
+    <p>Static site on GitHub Pages. Edit this content in <code>index.html</code>.</p>
+    <ul>
+      <li><a href="/robots.txt">robots.txt</a></li>
+      <li><a href="/favicon.svg">favicon.svg</a></li>
+    </ul>
+  </main>
+
+  <footer>
+    © <span id="y"></span> SamCiero
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

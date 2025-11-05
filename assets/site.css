@@ -1,6 +1,22 @@
-html,body{margin:0;font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial}
+/* assets/site.css — dark by default; light when html[data-theme="light"] */
+:root{
+  --bg:#0b0b0b; --fg:#eaeaea; --muted:#9aa0a6; --border:#222;
+  --link:#8ab4f8; --code-bg:#111
+}
+html[data-theme="light"]{
+  --bg:#ffffff; --fg:#111111; --muted:#666; --border:#e6e6e6;
+  --link:#0b5bd3; --code-bg:#f6f6f6
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--fg);background:var(--bg)}
 main{max-width:860px;margin:24px auto;padding:0 20px}
-header,footer{padding:16px 20px;border-bottom:1px solid #eee}
-footer{border-top:1px solid #eee;border-bottom:0;color:#666}
-a{color:#0b5bd3;text-decoration:none} a:hover{text-decoration:underline}
-pre,code{background:#f6f6f6;padding:.1em .3em;border-radius:4px}
+header,footer{padding:16px 20px;border-bottom:1px solid var(--border)}
+footer{border-top:1px solid var(--border);border-bottom:0;color:var(--muted)}
+a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+pre,code{background:var(--code-bg);padding:.1em .3em;border-radius:4px}
+header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+nav a{margin-right:16px}
+#theme-toggle{margin-left:auto;border:1px solid var(--border);background:transparent;color:var(--fg);
+  padding:6px 10px;border-radius:6px;cursor:pointer}
