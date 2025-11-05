@@ -1,7 +1,9 @@
-// Collapsible ToC (H2+H3). Default collapsed; numbers; active highlight; mobile overlay.
-// Looks for <aside id="TOC">. Uses central registry (assets/ids.js) for stable anchors via data-key.
+/* assets/toc.js (refactored)
+   Collapsible ToC (H2+H3). Default collapsed on narrow viewports; numbers; active highlight; mobile overlay.
+   Targets <aside id="TOC">. Uses registry (assets/ids.js) for stable anchors via data-key.
+*/
 (function () {
-  const root = document.documentElement;
+  const root  = document.documentElement;
   const mount = document.getElementById('TOC');
   if (!mount) return;
 
@@ -24,7 +26,7 @@
   // 4) slug(text) with de-dupe
   const seen = new Map();
   const slug = s => s.toLowerCase().trim()
-    .replace(/[^\w\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-');
+    .replace(/[^\w\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-');
 
   hs.forEach(h => {
     if (h.dataset.key && REG[h.dataset.key]) { h.id = REG[h.dataset.key]; return; }
@@ -98,22 +100,68 @@
   }, { rootMargin: `-${offsetPx}px 0px -60% 0px`, threshold: [0, .25, .5, .75, 1] });
   document.querySelectorAll('main h2, main h3').forEach(h => io.observe(h));
 
-  // Mobile overlay (M1)
-  const backdrop = document.createElement('div');
-  backdrop.className = 'toc-backdrop';
-  backdrop.addEventListener('click', () => root.classList.remove('toc-open'));
-  document.body.appendChild(backdrop);
+  // --- Mobile overlay + toggle improvements ---
+  // Backdrop (M1)
+  let backdrop = document.querySelector('.toc-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'toc-backdrop';
+    document.body.appendChild(backdrop);
+  }
 
-  const openBtn = document.getElementById('toc-open');
-  if (openBtn) openBtn.addEventListener('click', () => {
-    root.classList.add('toc-open');
-    const firstSummary = nav.querySelector('summary');
-    if (firstSummary) setTimeout(() => firstSummary.focus(), 0);
-  });
+  const mq = window.matchMedia('(max-width: 900px)');
+  const btn = document.getElementById('toc-open');
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && root.classList.contains('toc-open')) {
-      root.classList.remove('toc-open');
+  const setOpen = (open) => {
+    root.classList.toggle('toc-open', open);
+
+    // ARIA on the button (if present)
+    if (btn) {
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Close table of contents' : 'Open table of contents');
     }
+
+    // On narrow screens, manage focusability + body scroll
+    if (mq.matches) {
+      mount.toggleAttribute('inert', !open);
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        const firstSummary = nav.querySelector('summary');
+        if (firstSummary) setTimeout(() => firstSummary.focus(), 0);
+      } else if (btn) {
+        setTimeout(() => btn.focus(), 0);
+      }
+    } else {
+      mount.removeAttribute('inert');
+      document.body.style.overflow = '';
+    }
+  };
+
+  // Keep state/ARIA synced when crossing the breakpoint
+  const applyViewportRules = () => {
+    if (mq.matches) {
+      const isOpen = root.classList.contains('toc-open');
+      if (btn) btn.setAttribute('aria-expanded', String(isOpen));
+      mount.toggleAttribute('inert', !isOpen);
+    } else {
+      if (btn) btn.setAttribute('aria-expanded', 'true'); // wide: TOC is visible
+      mount.removeAttribute('inert');
+      document.body.style.overflow = '';
+    }
+  };
+  applyViewportRules();
+  mq.addEventListener('change', applyViewportRules);
+
+  // Toggle via button (now a real toggle, not just "open")
+  if (btn) btn.addEventListener('click', () => {
+    setOpen(!root.classList.contains('toc-open'));
+  }, { passive: true });
+
+  // Close on backdrop click
+  backdrop.addEventListener('click', () => setOpen(false), { passive: true });
+
+  // Close on Esc
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && root.classList.contains('toc-open')) setOpen(false);
   });
 })();

@@ -18,13 +18,13 @@
       <a href="/about/" aria-current="page">About</a>
       <a href="/contact/">Contact</a>
     </nav>
-    <button id="toc-open" type="button">Contents</button>
+    <button id="toc-open" type="button" aria-controls="TOC" aria-expanded="false">Contents</button>
     <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
   </header>
 
   <div class="layout">
     <!-- ToC placeholder named 'TOC' -->
-    <aside id="TOC" aria-label="TOC"></aside>
+    <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
 
     <main>
       <h1>About this site</h1>
