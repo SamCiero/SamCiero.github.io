@@ -5,36 +5,48 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/favicon.svg">
   <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/toc.css">
   <script src="/assets/theme.js" defer></script>
+  <script src="/assets/ids.js" defer></script>
+  <script src="/assets/toc.js" defer></script>
   <title>Home • SamCiero</title>
 </head>
-<body>
+<body data-page="home">
   <header>
     <nav>
       <a href="/" aria-current="page">Home</a>
-      <!-- Add more links when pages exist, e.g.:
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      -->
+      <!-- <a href="/about/">About</a> -->
+      <!-- <a href="/contact/">Contact</a> -->
     </nav>
+    <button id="toc-open" type="button">Contents</button>
     <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
   </header>
 
-  <main>
-    <h1>Welcome</h1>
-    <p>Static site on GitHub Pages. Edit this content in <code>index.html</code>.</p>
-    <ul>
-      <li><a href="/robots.txt">robots.txt</a></li>
-      <li><a href="/favicon.svg">favicon.svg</a></li>
-    </ul>
-  </main>
+  <div class="layout">
+    <!-- ToC placeholder named 'TOC' -->
+    <aside id="TOC" aria-label="TOC"></aside>
 
-  <footer>
-    © <span id="y"></span> SamCiero
-  </footer>
+    <main>
+      <h1>Welcome</h1>
+      <p>Edit this content in <code>index.html</code>. Headings (H2/H3) below drive the ToC.</p>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+      <h2 data-key="getting_started">Getting Started</h2>
+      <p>Intro paragraph…</p>
+      <h3 data-key="edit_home">Edit the Home page</h3>
+      <p>Change the content inside <code>&lt;main&gt;…&lt;/main&gt;</code> and push with <code>ship</code>.</p>
+      <h3 data-key="deploy">Deploy changes</h3>
+      <p>Use <code>ship "feat: message"</code>; Pages auto-deploys.</p>
+
+      <h2 data-key="next_steps">Next Steps</h2>
+      <p>Another section…</p>
+      <h3 data-key="about_page">About page</h3>
+      <p>Create <code>/about/index.html</code> with the same head/header and ToC placeholder.</p>
+      <h3 data-key="contact_page">Contact page</h3>
+      <p>Create <code>/contact/index.html</code> similarly.</p>
+    </main>
+  </div>
+
+  <footer>© <span id="y"></span> SamCiero</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 </body>
 </html>

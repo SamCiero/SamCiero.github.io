@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/toc.css">
+  <script src="/assets/theme.js" defer></script>
+  <script src="/assets/ids.js" defer></script>
+  <script src="/assets/toc.js" defer></script>
+  <title>About • SamCiero</title>
+</head>
+<body data-page="about">
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about/" aria-current="page">About</a>
+      <a href="/contact/">Contact</a>
+    </nav>
+    <button id="toc-open" type="button">Contents</button>
+    <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
+  </header>
+
+  <div class="layout">
+    <!-- ToC placeholder named 'TOC' -->
+    <aside id="TOC" aria-label="TOC"></aside>
+
+    <main>
+      <h1>About this site</h1>
+      <p>High-level notes about purpose, structure, and links.</p>
+
+      <h2 data-key="overview">Overview</h2>
+      <p>Short overview paragraph.</p>
+      <h3 data-key="purpose">Purpose</h3>
+      <p>What this site is for.</p>
+      <h3 data-key="build">How it’s built</h3>
+      <p>GitHub Pages + static HTML/CSS/JS.</p>
+
+      <h2 data-key="project">Project</h2>
+      <p>Repository and licensing details.</p>
+      <h3 data-key="repo">Repository</h3>
+      <p><a href="https://github.com/SamCiero/SamCiero.github.io">GitHub repo</a>.</p>
+      <h3 data-key="license">License</h3>
+      <p>License info here.</p>
+    </main>
+  </div>
+
+  <footer>© <span id="y"></span> SamCiero</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>

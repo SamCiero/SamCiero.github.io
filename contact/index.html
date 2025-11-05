@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/toc.css">
+  <script src="/assets/theme.js" defer></script>
+  <script src="/assets/ids.js" defer></script>
+  <script src="/assets/toc.js" defer></script>
+  <title>Contact • SamCiero</title>
+</head>
+<body data-page="contact">
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/contact/" aria-current="page">Contact</a>
+    </nav>
+    <button id="toc-open" type="button">Contents</button>
+    <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
+  </header>
+
+  <div class="layout">
+    <!-- ToC placeholder named 'TOC' -->
+    <aside id="TOC" aria-label="TOC"></aside>
+
+    <main>
+      <h1>Contact</h1>
+      <p>Ways to reach or follow updates.</p>
+
+      <h2 data-key="overview">Overview</h2>
+      <p>Contact options summary.</p>
+      <h3 data-key="channels">Channels</h3>
+      <p>Links or preferred channels here.</p>
+
+      <h2 data-key="issues">Issues & feedback</h2>
+      <p>Use GitHub issues for bug reports or requests.</p>
+      <h3 data-key="social">Social</h3>
+      <p>Optional links, if any.</p>
+    </main>
+  </div>
+
+  <footer>© <span id="y"></span> SamCiero</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>
