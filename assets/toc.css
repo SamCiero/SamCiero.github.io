@@ -1,26 +1,34 @@
-/* Basic layout: TOC left, content right */
+/* Basic layout: TOC left, content right (desktop) */
 .layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
 #TOC { position: sticky; top: 72px; max-height: calc(100vh - 96px); overflow: auto; }
-html:not(.toc-open) #TOC { display: none; }
-html.toc-open #TOC { display: block; }
-/* Mobile / narrow: TOC is off-canvas by default and shown when html.toc-open is set */
+
+/* Desktop: simple hide/show via display (closed by default) */
+@media (min-width: 901px) {
+  html:not(.toc-open) #TOC { display: none; }
+  html.toc-open #TOC { display: block; }
+}
+
+/* Mobile / narrow: off-canvas panel driven by transform */
 @media (max-width: 900px) {
   .layout { display: block; }
+
+  /* Always render the panel so it can animate; use transform+visibility to hide */
   #TOC {
     position: fixed; inset: 0 auto 0 0; width: 82%; max-width: 360px;
-    transform: translateX(-100%); transition: transform .2s ease, visibility .2s;
     background: var(--bg); border-right: 1px solid var(--border); padding: 16px;
-    visibility: hidden; z-index: 1001;
+    transform: translateX(-100%); visibility: hidden;
+    transition: transform .2s ease, visibility .2s ease;
+    z-index: 1001;
   }
   html.toc-open #TOC { transform: translateX(0); visibility: visible; }
 
-  /* Backdrop (your JS appends .toc-backdrop to <body>) */
+  /* Backdrop */
   .toc-backdrop {
-    position: fixed; inset: 0; background: #0008; opacity: 0; pointer-events: none;
-    transition: opacity .2s; z-index: 1000;
+    position: fixed; inset: 0; background: #0008;
+    opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 1000;
   }
   html.toc-open .toc-backdrop { opacity: 1; pointer-events: auto; }
 }
 
-/* Fallback if something uses [hidden] */
+/* Safety */
 [hidden] { display: none !important; }
