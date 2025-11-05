@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://SamCiero.github.io/sitemap.xml
