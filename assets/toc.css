@@ -2,17 +2,17 @@
 .layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
 #TOC { position: sticky; top: 72px; max-height: calc(100vh - 96px); overflow: auto; }
 
-/* Desktop: simple hide/show via display (closed by default) */
-@media (min-width: 901px) {
+/* Desktop/tablet: simple hide/show via display (closed by default) */
+@media (min-width: 601px) {
   html:not(.toc-open) #TOC { display: none; }
   html.toc-open #TOC { display: block; }
 }
 
-/* Mobile / narrow: off-canvas panel driven by transform */
-@media (max-width: 900px) {
+/* Phones only: off-canvas overlay driven by transform */
+@media (max-width: 600px) {
   .layout { display: block; }
 
-  /* Always render the panel so it can animate; use transform+visibility to hide */
+  /* Keep it rendered so it can animate; hide via transform+visibility */
   #TOC {
     position: fixed; inset: 0 auto 0 0; width: 82%; max-width: 360px;
     background: var(--bg); border-right: 1px solid var(--border); padding: 16px;
