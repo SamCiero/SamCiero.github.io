@@ -1,0 +1,6 @@
+html,body{margin:0;font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial}
+main{max-width:860px;margin:24px auto;padding:0 20px}
+header,footer{padding:16px 20px;border-bottom:1px solid #eee}
+footer{border-top:1px solid #eee;border-bottom:0;color:#666}
+a{color:#0b5bd3;text-decoration:none} a:hover{text-decoration:underline}
+pre,code{background:#f6f6f6;padding:.1em .3em;border-radius:4px}
