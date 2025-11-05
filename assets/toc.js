@@ -1,6 +1,7 @@
-/* assets/toc.js (refactored)
-   Collapsible ToC (H2+H3). Default collapsed on narrow viewports; numbers; active highlight; mobile overlay.
-   Targets <aside id="TOC">. Uses registry (assets/ids.js) for stable anchors via data-key.
+/* assets/toc.js
+   Collapsible ToC (H2+H3). Numbers, active highlight, hash-aware, mobile/desktop overlay.
+   Targets <aside id="TOC"> and a toggle button #toc-open.
+   Uses registry (assets/ids.js) for stable anchors via data-key.
 */
 (function () {
   const root  = document.documentElement;
@@ -100,8 +101,10 @@
   }, { rootMargin: `-${offsetPx}px 0px -60% 0px`, threshold: [0, .25, .5, .75, 1] });
   document.querySelectorAll('main h2, main h3').forEach(h => io.observe(h));
 
-  // --- Mobile overlay + toggle improvements ---
-  // Backdrop (M1)
+  // --- Toggle + overlay (mobile + desktop) ---
+  const btn = document.getElementById('toc-open');
+
+  // Backdrop once
   let backdrop = document.querySelector('.toc-backdrop');
   if (!backdrop) {
     backdrop = document.createElement('div');
@@ -109,59 +112,39 @@
     document.body.appendChild(backdrop);
   }
 
-  const mq = window.matchMedia('(max-width: 900px)');
-  const btn = document.getElementById('toc-open');
-
+  // Unified open/close for ALL viewports
   const setOpen = (open) => {
     root.classList.toggle('toc-open', open);
-
-    // ARIA on the button (if present)
+    mount.toggleAttribute('inert', !open);
     if (btn) {
       btn.setAttribute('aria-expanded', String(open));
       btn.setAttribute('aria-label', open ? 'Close table of contents' : 'Open table of contents');
     }
-
-    // On narrow screens, manage focusability + body scroll
-    if (mq.matches) {
-      mount.toggleAttribute('inert', !open);
-      document.body.style.overflow = open ? 'hidden' : '';
-      if (open) {
-        const firstSummary = nav.querySelector('summary');
-        if (firstSummary) setTimeout(() => firstSummary.focus(), 0);
-      } else if (btn) {
-        setTimeout(() => btn.focus(), 0);
-      }
+    // Focus niceties
+    if (open) {
+      const focusable = nav.querySelector('summary, a, button, [tabindex]:not([tabindex="-1"])');
+      if (focusable) setTimeout(() => focusable.focus(), 0);
+      document.body.style.overflow = 'hidden'; // prevent background scroll when panel is open
     } else {
-      mount.removeAttribute('inert');
       document.body.style.overflow = '';
+      if (btn) setTimeout(() => btn.focus(), 0);
     }
   };
 
-  // Keep state/ARIA synced when crossing the breakpoint
-  const applyViewportRules = () => {
-    if (mq.matches) {
-      const isOpen = root.classList.contains('toc-open');
-      if (btn) btn.setAttribute('aria-expanded', String(isOpen));
-      mount.toggleAttribute('inert', !isOpen);
-    } else {
-      if (btn) btn.setAttribute('aria-expanded', 'true'); // wide: TOC is visible
-      mount.removeAttribute('inert');
-      document.body.style.overflow = '';
-    }
-  };
-  applyViewportRules();
-  mq.addEventListener('change', applyViewportRules);
+  // Initial state: CLOSED everywhere
+  setOpen(false);
 
-  // Toggle via button (now a real toggle, not just "open")
+  // Button toggles open/closed
   if (btn) btn.addEventListener('click', () => {
     setOpen(!root.classList.contains('toc-open'));
   }, { passive: true });
 
-  // Close on backdrop click
+  // Close on backdrop
   backdrop.addEventListener('click', () => setOpen(false), { passive: true });
 
   // Close on Esc
   document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && root.classList.contains('toc-open')) setOpen(false);
     if (e.key === 'Escape' && root.classList.contains('toc-open')) setOpen(false);
   });
 })();

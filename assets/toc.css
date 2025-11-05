@@ -1,7 +1,8 @@
 /* Basic layout: TOC left, content right */
 .layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
 #TOC { position: sticky; top: 72px; max-height: calc(100vh - 96px); overflow: auto; }
-
+html:not(.toc-open) #TOC { display: none; }
+html.toc-open #TOC { display: block; }
 /* Mobile / narrow: TOC is off-canvas by default and shown when html.toc-open is set */
 @media (max-width: 900px) {
   .layout { display: block; }
