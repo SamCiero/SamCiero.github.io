@@ -22,11 +22,11 @@
     <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
   </header>
 
-  <div class="layout">
+  <div class="shell">
     <!-- ToC placeholder named 'TOC' -->
     <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
 
-    <main>
+    <main id="content">
       <h1>Welcome</h1>
       <p>Edit this content in <code>index.html</code>. Headings (H2/H3) below drive the ToC.</p>
 
@@ -44,6 +44,9 @@
       <h3 data-key="contact_page">Contact page</h3>
       <p>Create <code>/contact/index.html</code> similarly.</p>
     </main>
+
+    <!-- Optional future right rail -->
+    <!-- <aside class="rail">…</aside> -->
   </div>
 
   <footer>© <span id="y"></span> SamCiero</footer>

@@ -22,11 +22,11 @@
     <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
   </header>
 
-  <div class="layout">
+  <div class="shell">
     <!-- ToC placeholder named 'TOC' -->
     <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
 
-    <main>
+    <main id="content">
       <h1>About this site</h1>
       <p>High-level notes about purpose, structure, and links.</p>
 
@@ -44,6 +44,9 @@
       <h3 data-key="license">License</h3>
       <p>License info here.</p>
     </main>
+
+    <!-- Optional future right rail: enable per-page by adding .has-rail to .shell -->
+    <!-- <aside class="rail">…</aside> -->
   </div>
 
   <footer>© <span id="y"></span> SamCiero</footer>

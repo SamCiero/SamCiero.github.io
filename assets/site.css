@@ -8,15 +8,85 @@ html[data-theme="light"]{
   --link:#0b5bd3; --code-bg:#f6f6f6
 }
 
+/* Base */
 *{box-sizing:border-box}
 html,body{margin:0}
-body{font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--fg);background:var(--bg)}
-main{max-width:860px;margin:24px auto;padding:0 20px}
-header,footer{padding:16px 20px;border-bottom:1px solid var(--border)}
-footer{border-top:1px solid var(--border);border-bottom:0;color:var(--muted)}
-a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
-pre,code{background:var(--code-bg);padding:.1em .3em;border-radius:4px}
-header{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+body{
+  font:16px/1.6 system-ui, Segoe UI, Roboto, Helvetica, Arial;
+  color:var(--fg); background:var(--bg);
+}
+a{color:var(--link); text-decoration:none}
+a:hover{text-decoration:underline}
+pre,code{background:var(--code-bg); padding:.1em .3em; border-radius:4px}
+
+/* Header / footer */
+header,footer{padding:16px 20px; border-bottom:1px solid var(--border)}
+footer{border-top:1px solid var(--border); border-bottom:0; color:var(--muted)}
+header{display:flex; gap:12px; align-items:center; flex-wrap:wrap; position:sticky; top:0; z-index:1200}
 nav a{margin-right:16px}
-#theme-toggle{margin-left:auto;border:1px solid var(--border);background:transparent;color:var(--fg);
-  padding:6px 10px;border-radius:6px;cursor:pointer}
+#theme-toggle{
+  margin-left:auto; border:1px solid var(--border); background:transparent; color:var(--fg);
+  padding:6px 10px; border-radius:6px; cursor:pointer
+}
+
+/* ---------- Reading column + responsive shell ---------- */
+
+/* Center the reading column and keep line length comfy */
+#content{
+  max-width:72ch;         /* ~60–80ch is the usual sweet spot */
+  margin-inline:auto;
+  padding-block:24px;
+}
+
+/* The page shell provides columns when needed (TOC, optional right rail) */
+.shell{ padding-inline:20px }
+
+/* Tablet / Desktop (≥601px): grid that adapts to TOC open/closed and optional right rail */
+@media (min-width:601px){
+
+  .shell{
+    display:grid;
+    gap:24px;
+    align-items:start;
+
+    /* Default: single column (TOC closed, no rail) */
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:"main";
+  }
+
+  /* Areas */
+  #TOC{ grid-area:toc }
+  #content{ grid-area:main }
+  .rail{ grid-area:rail }
+
+  /* When TOC is open: two columns (TOC + main) */
+  html.toc-open .shell{
+    grid-template-columns:280px minmax(0,1fr);
+    grid-template-areas:"toc main";
+  }
+
+  /* Optional right rail: enable per page with .shell.has-rail */
+  .shell.has-rail{
+    grid-template-columns:minmax(0,1fr) 320px;
+    grid-template-areas:"main rail";
+  }
+
+  /* TOC + rail + main (three columns) */
+  html.toc-open .shell.has-rail{
+    grid-template-columns:280px minmax(0,1fr) 320px;
+    grid-template-areas:"toc main rail";
+  }
+
+  /* Hide TOC element from flow when closed (desktop/tablet only) */
+  html:not(.toc-open) #TOC{ display:none }
+  html.toc-open #TOC{ display:block }
+}
+
+/* Phones (≤600px): no grid here; TOC is handled as overlay by assets/toc.css */
+@media (max-width:600px){
+  .shell{ padding-inline:16px }
+  #content{ max-width:100%; margin-inline:0 }
+}
+
+/* Anchor jump comfort: don’t hide headings under the sticky header */
+main h2, main h3{ scroll-margin-top:72px }
