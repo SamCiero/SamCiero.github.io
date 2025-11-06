@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    { "id": 0, "name": "Arwic",      "x": 50,  "y": 50,  "type": "town" },
+    { "id": 1, "name": "Hebian-to",  "x": 150, "y": 120, "type": "town" }
+  ],
+  "edges": [
+    { "a": 0, "b": 1, "w": 1.0 }
+  ],
+  "bbox": [0, 0, 200, 200],
+  "counts": { "nodes": 2, "edges": 1 }
+}

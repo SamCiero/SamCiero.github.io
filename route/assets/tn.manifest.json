@@ -1,0 +1,9 @@
+{
+  "dataset": "tn",
+  "data_version": 1,
+  "sha": "dev",
+  "graph_url": "./assets/tn.graph.v1.dev.json",
+  "counts": { "nodes": 2, "edges": 1 },
+  "bbox": [0, 0, 200, 200],
+  "created_at": "2025-11-06T00:00:00Z"
+}
