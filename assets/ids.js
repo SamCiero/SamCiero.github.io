@@ -1,7 +1,8 @@
 // Central anchor-id registry (single source of truth).
 // Keys are per-page; values are stable anchor IDs.
 window.ANCHOR_IDS = {
-  // Home page
+
+  // Home
   home: {
     getting_started: "getting-started",
     edit_home: "edit-home",
@@ -11,7 +12,7 @@ window.ANCHOR_IDS = {
     contact_page: "contact-page"
   },
 
-  // About page
+  // About
   about: {
     overview: "about-overview",
     purpose: "about-purpose",
@@ -21,11 +22,16 @@ window.ANCHOR_IDS = {
     license: "about-license"
   },
 
-  // Contact page
+  // Contact
   contact: {
     overview: "contact-overview",
     channels: "contact-channels",
     issues: "contact-issues",
     social: "contact-social"
+  },
+
+  // Route Finder
+  route: {
+    title: "route-finder"
   }
 };
