@@ -1,19 +1,63 @@
-<header>
-  <a id="route-finder"></a>
-  <strong>Route Finder</strong>
-</header>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/favicon.svg">
+  <!-- Global styles & TOC -->
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/toc.css">
+  <script src="/assets/theme.js" defer></script>
+  <script src="/assets/ids.js" defer></script>
+  <script src="/assets/toc.js" defer></script>
+  <title>Route Finder • SamCiero</title>
+</head>
+<body data-page="route">
+  <header>
+    <nav>
+      <a href="/">Home</a>
+      <!-- add About/Contact later if you want them visible here -->
+    </nav>
+    <button id="toc-open" type="button" aria-controls="TOC" aria-expanded="false">Contents</button>
+    <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
+  </header>
 
-<main>
-  <section id="panel">
-    <a id="route-how-to"></a>
-    <!-- controls... -->
-  </section>
+  <div class="shell">
+    <!-- ToC mount -->
+    <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
 
-  <canvas id="map" width="1200" height="800"></canvas>
-</main>
+    <main id="content">
+      <!-- Single anchored section: uses your ids.js mapping (route: { title: "route-finder" }) -->
+      <h2 data-key="title">Route Finder</h2>
 
-<footer style="padding:12px 16px;">
-  <a id="route-data"></a>
-  <small>Data v1 · see manifest at <code>/route/assets/tn.manifest.json</code></small>
-  <a id="route-diag"></a>
-</footer>
+      <!-- Minimal tool placeholders (you can refine later) -->
+      <section id="panel" style="display:grid;gap:8px;align-content:start;max-width:420px">
+        <label>Start <input id="start" placeholder="Town/Portal name"></label>
+        <label>End <input id="end" placeholder="Town/Portal name"></label>
+        <label>Mode
+          <select id="mode">
+            <option value="shortest">Shortest distance</option>
+            <option value="fewest_hops">Fewest hops</option>
+          </select>
+        </label>
+        <button id="go" type="button">Find route</button>
+        <div id="stats" style="opacity:.8"></div>
+      </section>
+
+      <canvas id="map" width="1200" height="800" style="width:100%;max-height:70vh;background:#0b0b0b0d;margin-block:16px"></canvas>
+    </main>
+  </div>
+
+  <footer>© <span id="y"></span> SamCiero</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+
+  <!-- Route app bootstrap (fine to leave empty for now; keep paths relative in /route/) -->
+  <script type="module" src="./app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      // bump ?v= when you actually change sw.js
+      navigator.serviceWorker.register('./sw.js?v=1', { scope: './' }).catch(console.error);
+    }
+  </script>
+</body>
+</html>
