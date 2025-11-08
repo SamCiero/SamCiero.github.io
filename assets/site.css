@@ -27,12 +27,15 @@ header{
   position:sticky; top:0; z-index:1200;
   background:var(--bg); /* ensure sticky bar is opaque over content */
 }
+/* Header item order: Contents (0), Nav (1), Theme (2) */
+header #toc-open{ order:0 }
+header nav{ order:1 }
 nav a{margin-right:16px}
 
 /* Header buttons: auto-inserted via /assets/header.js */
 #toc-open,
 #theme-toggle{
-  border:1px solid var(--border); background:transparent; color:var(--fg);
+  order:2; border:1px solid var(--border); background:transparent; color:var(--fg);
   padding:6px 10px; border-radius:6px; cursor:pointer
 }
 #theme-toggle{ margin-left:auto } /* keep Theme pinned right; Contents stays before it */
