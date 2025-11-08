@@ -5,25 +5,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/favicon.svg">
+
+  <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="stylesheet" href="/assets/toc.css">
-  <script src="/assets/theme.js" defer></script>
-  <script src="/assets/ids.js" defer></script>
-  <script src="/assets/toc.js" defer></script>
+
+  <!-- DRY loader: enforces script order site-wide -->
+  <script type="module" src="/assets/boot.js"></script>
+
   <title>About • SamCiero</title>
 </head>
 <body data-page="about">
   <header>
-    <nav>
-      <a href="/#getting-started">Home</a>
-      <a href="/route/#route-finder">Route Finder</a>
-    </nav>
-    <button id="toc-open" type="button" aria-controls="TOC" aria-expanded="false">Contents</button>
-    <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
+    <nav></nav> <!-- header.js will render Home + tool links; inserts Contents + Theme buttons -->
   </header>
 
   <div class="shell">
-    <!-- ToC placeholder named 'TOC' -->
+    <!-- TOC drawer mount (present on all pages; tools excluded by toc.global.js) -->
     <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
 
     <main id="content">

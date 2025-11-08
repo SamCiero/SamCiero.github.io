@@ -1,31 +1,53 @@
-/* Basic layout: TOC left, content right (desktop) */
-.layout { display: grid; grid-template-columns: 280px 1fr; gap: 24px; }
-#TOC { position: sticky; top: 72px; max-height: calc(100vh - 96px); overflow: auto; }
+/* /assets/toc.css */
 
-/* Desktop/tablet (≥601px): show/hide via display */
-@media (min-width: 601px) {
-  html:not(.toc-open) #TOC { display: none; }
-  html.toc-open #TOC { display: block; }
+/* Desktop/tablet TOC container */
+#TOC{
+  position: sticky;
+  top: 72px;                               /* matches scroll-margin-top in site.css */
+  max-height: calc(100vh - 96px);
+  overflow: auto;
 }
 
+/* Desktop/tablet (≥601px):
+   Show/hide is handled in /assets/site.css via .toc-open;
+   no duplication here to avoid cascade conflicts. */
+
 /* Phones (≤600px): slide-in overlay */
-@media (max-width: 600px) {
-  .shell { display: block; } /* grid off on phones */
+@media (max-width: 600px){
+  /* .shell is already non-grid on phones (site.css), no override needed */
 
-  #TOC {
-    position: fixed; inset: 0 auto 0 0; width: 82%; max-width: 360px;
-    background: var(--bg); border-right: 1px solid var(--border); padding: 16px;
-    transform: translateX(-100%); visibility: hidden;
-    transition: transform .2s ease, visibility .2s ease; z-index: 1001;
+  #TOC{
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: 82%;
+    max-width: 360px;
+    background: var(--bg);
+    border-right: 1px solid var(--border);
+    padding: 16px;
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform .2s ease, visibility .2s ease;
+    z-index: 1001;                         /* below sticky header (z=1200), above backdrop */
   }
-  html.toc-open #TOC { transform: translateX(0); visibility: visible; }
+  html.toc-open #TOC{
+    transform: translateX(0);
+    visibility: visible;
+  }
 
-  .toc-backdrop {
-    position: fixed; inset: 0; background: #0008;
-    opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 1000;
+  .toc-backdrop{
+    position: fixed;
+    inset: 0;
+    background: #0008;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+    z-index: 1000;
   }
-  html.toc-open .toc-backdrop { opacity: 1; pointer-events: auto; }
+  html.toc-open .toc-backdrop{
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 /* Safety */
-[hidden] { display: none !important; }
+[hidden]{ display: none !important; }

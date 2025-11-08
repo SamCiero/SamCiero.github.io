@@ -1,0 +1,6 @@
+<ONE-LINE SUBJECT HERE>
+
+<FILE-LEVEL DIFFS — one line per changed file using +/~/- and an em dash>
+# Notes (ignored by Git):
+# - Subject ≤120 chars, imperative, no trailing period
+# - Body lists only changed files (no "=" / unchanged)

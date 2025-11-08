@@ -1,4 +1,37 @@
+<!-- /404.html -->
 <!doctype html>
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=/" />
-<p>Not found. <a href="/">Home</a></p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/favicon.svg">
+
+  <!-- Global CSS -->
+  <link rel="stylesheet" href="/assets/site.css">
+  <link rel="stylesheet" href="/assets/toc.css">
+
+  <!-- DRY loader: theme → site-config → ids → header → toc → toc.global -->
+  <script type="module" src="/assets/boot.js"></script>
+
+  <title>Page Not Found • SamCiero</title>
+</head>
+<body data-page="404">
+  <header>
+    <nav></nav> <!-- header.js renders Home + tools; inserts Contents + Theme -->
+  </header>
+
+  <div class="shell">
+    <!-- Global TOC present on all pages; renders Home/About/Contact only -->
+    <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
+
+    <main id="content">
+      <h1>Not found</h1>
+      <p>The page you requested doesn’t exist.</p>
+      <p><a href="/#getting-started">Back to Home</a></p>
+    </main>
+  </div>
+
+  <footer>© <span id="y"></span> SamCiero</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+</html>

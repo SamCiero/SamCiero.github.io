@@ -1,37 +1,34 @@
+<!-- /route/index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/favicon.svg">
-  <!-- Global styles & TOC -->
+
+  <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="stylesheet" href="/assets/toc.css">
-  <script src="/assets/theme.js" defer></script>
-  <script src="/assets/ids.js" defer></script>
-  <script src="/assets/toc.js" defer></script>
+
+  <!-- DRY loader: enforces script order site-wide (theme → site-config → ids → header → toc → toc.global) -->
+  <script type="module" src="/assets/boot.js"></script>
+
   <title>Route Finder • SamCiero</title>
 </head>
 <body data-page="route">
   <header>
-    <nav>
-      <a href="/#getting-started">Home</a>
-      <a href="/route/#route-finder" aria-current="page">Route Finder</a>
-    </nav>
-
-    <button id="toc-open" type="button" aria-controls="TOC" aria-expanded="false">Contents</button>
-    <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
+    <nav></nav> <!-- header.js renders Home + tool links; inserts Contents + Theme -->
   </header>
 
   <div class="shell">
-    <!-- ToC mount -->
+    <!-- TOC drawer mount (present on all pages; tools excluded by toc.global.js) -->
     <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
 
     <main id="content">
-      <!-- Single anchored section: uses your ids.js mapping (route: { title: "route-finder" }) -->
-      <h2 data-key="title">Route Finder</h2>
+      <!-- Single anchored section: stable ID from ANCHOR_IDS.route.title -->
+      <h2 id="route-finder" data-key="title">Route Finder</h2>
 
-      <!-- Minimal tool placeholders (you can refine later) -->
+      <!-- Minimal tool UI -->
       <section id="panel" style="display:grid;gap:8px;align-content:start;max-width:420px">
         <label>Start <input id="start" placeholder="Town/Portal name"></label>
         <label>End <input id="end" placeholder="Town/Portal name"></label>
@@ -45,18 +42,19 @@
         <div id="stats" style="opacity:.8"></div>
       </section>
 
-      <canvas id="map" width="1200" height="800" style="width:100%;max-height:70vh;background:#0b0b0b0d;margin-block:16px"></canvas>
+      <canvas id="map" width="1200" height="800"
+              style="width:100%;max-height:70vh;background:#0b0b0b0d;margin-block:16px"></canvas>
     </main>
   </div>
 
   <footer>© <span id="y"></span> SamCiero</footer>
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
 
-  <!-- Route app bootstrap (fine to leave empty for now; keep paths relative in /route/) -->
+  <!-- Route app bootstrap -->
   <script type="module" src="./app.js"></script>
   <script>
     if ('serviceWorker' in navigator) {
-      // bump ?v= when you actually change sw.js
+      // bump ?v= when sw.js changes to force an update
       navigator.serviceWorker.register('./sw.js?v=1', { scope: './' }).catch(console.error);
     }
   </script>

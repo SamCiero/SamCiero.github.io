@@ -10,43 +10,41 @@
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="stylesheet" href="/assets/toc.css">
 
-  <!-- Global JS (order matters: ids -> header -> toc) -->
-  <script src="/assets/theme.js" defer></script>
-  <script src="/assets/ids.js" defer></script>
-  <script src="/assets/header.js" defer></script>
-  <script src="/assets/toc.js" defer></script>
+  <!-- DRY loader: theme → site-config → ids → header → toc → toc.global -->
+  <script type="module" src="/assets/boot.js"></script>
 
-  <title>Contact • SamCiero</title>
+  <title>Home • SamCiero</title>
 </head>
-<body data-page="contact">
+<body data-page="home">
   <header>
-    <nav>
-      <a href="/#getting-started">Home</a>
-      <a href="/route/#route-finder">Route Finder</a>
-    </nav>
-    <button id="toc-open" type="button" aria-controls="TOC" aria-expanded="false">Contents</button>
-    <button id="theme-toggle" type="button">🌙 Dark</button>
+    <nav></nav> <!-- header.js renders Home + tools; inserts Contents + Theme -->
   </header>
 
   <div class="shell">
-    <!-- ToC placeholder -->
+    <!-- TOC drawer mount (present on all pages; tools excluded by toc.global.js) -->
     <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
 
     <main id="content">
-      <h1>Contact</h1>
-      <p>Ways to reach or follow updates.</p>
+      <h1>Welcome</h1>
+      <p>Edit this content in <code>index.html</code>. Headings (H2/H3) below drive the ToC.</p>
 
-      <h2 data-key="overview">Overview</h2>
-      <p>Contact options summary.</p>
+      <h2 data-key="getting_started">Getting Started</h2>
+      <p>Intro paragraph…</p>
 
-      <h3 data-key="channels">Channels</h3>
-      <p>Links or preferred channels here.</p>
+      <h3 data-key="edit_home">Edit the Home page</h3>
+      <p>Change the content inside <code>&lt;main&gt;…&lt;/main&gt;</code> and push with <code>ship</code>.</p>
 
-      <h2 data-key="issues">Issues &amp; feedback</h2>
-      <p>Use GitHub issues for bug reports or requests.</p>
+      <h3 data-key="deploy">Deploy changes</h3>
+      <p>Use <code>ship "feat: message"</code>; Pages auto-deploys.</p>
 
-      <h3 data-key="social">Social</h3>
-      <p>Optional links, if any.</p>
+      <h2 data-key="next_steps">Next Steps</h2>
+      <p>Another section…</p>
+
+      <h3 data-key="about_page">About page</h3>
+      <p>Create or edit <code>/about/index.html</code> with the same head/header and ToC placeholder.</p>
+
+      <h3 data-key="contact_page">Contact page</h3>
+      <p>Create or edit <code>/contact/index.html</code> similarly.</p>
     </main>
 
     <!-- Optional future right rail -->
