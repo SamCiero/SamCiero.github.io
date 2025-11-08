@@ -28,6 +28,18 @@ nav a{margin-right:16px}
   margin-left:auto; border:1px solid var(--border); background:transparent; color:var(--fg);
   padding:6px 10px; border-radius:6px; cursor:pointer
 }
+/* Current-page nav state (persistent highlight) */
+header nav a[aria-current="page"]{
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px; /* nicer underline */
+}
+
+/* Accessibility: keep a clear focus ring on the active item */
+header nav a[aria-current="page"]:focus-visible{
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
 
 /* ---------- Reading column + responsive shell ---------- */
 

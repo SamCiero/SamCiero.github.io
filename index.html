@@ -1,48 +1,52 @@
+<!-- /index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="/favicon.svg">
+
+  <!-- Global CSS -->
   <link rel="stylesheet" href="/assets/site.css">
   <link rel="stylesheet" href="/assets/toc.css">
+
+  <!-- Global JS (order matters: ids -> header -> toc) -->
   <script src="/assets/theme.js" defer></script>
   <script src="/assets/ids.js" defer></script>
+  <script src="/assets/header.js" defer></script>
   <script src="/assets/toc.js" defer></script>
-  <title>Home • SamCiero</title>
+
+  <title>Contact • SamCiero</title>
 </head>
-<body data-page="home">
+<body data-page="contact">
   <header>
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <!-- <a href="/about/">About</a> -->
-      <!-- <a href="/contact/">Contact</a> -->
+      <a href="/#getting-started">Home</a>
+      <a href="/route/#route-finder">Route Finder</a>
     </nav>
     <button id="toc-open" type="button" aria-controls="TOC" aria-expanded="false">Contents</button>
-    <button id="theme-toggle" type="button" onclick="toggleTheme()">🌙 Dark</button>
+    <button id="theme-toggle" type="button">🌙 Dark</button>
   </header>
 
   <div class="shell">
-    <!-- ToC placeholder named 'TOC' -->
+    <!-- ToC placeholder -->
     <aside id="TOC" role="navigation" aria-label="Table of contents"></aside>
 
     <main id="content">
-      <h1>Welcome</h1>
-      <p>Edit this content in <code>index.html</code>. Headings (H2/H3) below drive the ToC.</p>
+      <h1>Contact</h1>
+      <p>Ways to reach or follow updates.</p>
 
-      <h2 data-key="getting_started">Getting Started</h2>
-      <p>Intro paragraph…</p>
-      <h3 data-key="edit_home">Edit the Home page</h3>
-      <p>Change the content inside <code>&lt;main&gt;…&lt;/main&gt;</code> and push with <code>ship</code>.</p>
-      <h3 data-key="deploy">Deploy changes</h3>
-      <p>Use <code>ship "feat: message"</code>; Pages auto-deploys.</p>
+      <h2 data-key="overview">Overview</h2>
+      <p>Contact options summary.</p>
 
-      <h2 data-key="next_steps">Next Steps</h2>
-      <p>Another section…</p>
-      <h3 data-key="about_page">About page</h3>
-      <p>Create <code>/about/index.html</code> with the same head/header and ToC placeholder.</p>
-      <h3 data-key="contact_page">Contact page</h3>
-      <p>Create <code>/contact/index.html</code> similarly.</p>
+      <h3 data-key="channels">Channels</h3>
+      <p>Links or preferred channels here.</p>
+
+      <h2 data-key="issues">Issues &amp; feedback</h2>
+      <p>Use GitHub issues for bug reports or requests.</p>
+
+      <h3 data-key="social">Social</h3>
+      <p>Optional links, if any.</p>
     </main>
 
     <!-- Optional future right rail -->
