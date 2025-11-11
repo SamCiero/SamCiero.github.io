@@ -1,11 +1,20 @@
-/* /assets/site.css — dark by default; light when html[data-theme="light"] */
+/* assets/site.css — dark by default; light when html[data-theme="light"] */
 :root{
   --bg:#0b0b0b; --fg:#eaeaea; --muted:#9aa0a6; --border:#222;
-  --link:#8ab4f8; --code-bg:#111
+  --link:#8ab4f8; --code-bg:#111;
+
+  /* header/button palette */
+  --btn-bg:transparent; --btn-fg:var(--fg); --btn-border:var(--border);
+  --btn-hover-bg:#ffffff10;               /* subtle hover (dark) */
+  --btn-active-bg:rgba(138,180,248,.12);  /* active/selected (dark) */
 }
 html[data-theme="light"]{
   --bg:#ffffff; --fg:#111111; --muted:#666; --border:#e6e6e6;
-  --link:#0b5bd3; --code-bg:#f6f6f6
+  --link:#0b5bd3; --code-bg:#f6f6f6;
+
+  --btn-bg:transparent; --btn-fg:var(--fg); --btn-border:var(--border);
+  --btn-hover-bg:#00000008;               /* subtle hover (light) */
+  --btn-active-bg:rgba(11,91,211,.10);    /* active/selected (light) */
 }
 
 /* Base */
@@ -25,26 +34,34 @@ footer{border-top:1px solid var(--border); border-bottom:0; color:var(--muted)}
 header{
   display:flex; gap:12px; align-items:center; flex-wrap:wrap;
   position:sticky; top:0; z-index:1200;
-  background:var(--bg); /* ensure sticky bar is opaque over content */
+  background:var(--bg); /* sticky bar is opaque over content */
 }
-/* Header item order: Contents (0), Nav (1), Theme (2) */
-header #toc-open{ order:0 }
-header nav{ order:1 }
-nav a{margin-right:16px}
 
-/* Header buttons: auto-inserted via /assets/header.js */
+/* Header item order: Contents (first), Nav (middle), Theme (right) */
+header #toc-open{ order:-1 }
+header nav{ order:0 }
+#theme-toggle{ order:1; margin-left:auto }
+
+/* Header controls: make links/buttons look consistent */
+header nav a,
 #toc-open,
 #theme-toggle{
-  order:2; border:1px solid var(--border); background:transparent; color:var(--fg);
-  padding:6px 10px; border-radius:6px; cursor:pointer
+  appearance:none; display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:6px; cursor:pointer;
+  border:1px solid var(--btn-border); background:var(--btn-bg); color:var(--btn-fg);
+  text-decoration:none; line-height:1.2;
 }
-#theme-toggle{ margin-left:auto } /* keep Theme pinned right; Contents stays before it */
+nav a{ margin-right:12px }
 
-/* Current-page nav state (persistent highlight) */
+/* Hover / active states */
+header nav a:hover, #toc-open:hover, #theme-toggle:hover{ background:var(--btn-hover-bg) }
 header nav a[aria-current="page"]{
-  font-weight:600;
-  text-decoration:underline;
-  text-underline-offset:2px;
+  background:var(--btn-active-bg); border-color:var(--link); color:var(--link);
+  text-decoration:none; font-weight:600;
+}
+/* Contents button reflects TOC open state */
+html.toc-open #toc-open{
+  background:var(--btn-active-bg); border-color:var(--link); color:var(--link);
 }
 
 /* Accessibility: clear focus rings for all interactive items */
