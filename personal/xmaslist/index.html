@@ -22,6 +22,7 @@
       #content.xmaslist-wide table {
         width: 100%;
         border-collapse: collapse;
+        table-layout: fixed;
       }
 
       #content.xmaslist-wide th,
@@ -34,6 +35,32 @@
       #content.xmaslist-wide th {
         text-align: left;
       }
+
+      /* Column sizing/alignment */
+      #content.xmaslist-wide .col-index {
+        width: 4ch;
+        text-align: right;
+      }
+
+      #content.xmaslist-wide .col-item {
+        width: 46%;
+      }
+
+      #content.xmaslist-wide .col-price {
+        width: 11%;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      #content.xmaslist-wide .col-store {
+        width: 15%;
+      }
+
+      #content.xmaslist-wide .col-notes {
+        width: 28%;
+      }
+
+      /* Clothes/size can float; no special widths needed */
     </style>
   </head>
   <body>
@@ -49,36 +76,36 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">Item</th>
-              <th scope="col">Price (USD)</th>
-              <th scope="col">Store</th>
-              <th scope="col">Notes</th>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Raspberry Pi 5 (16GB) – board</td>
-              <td>$119.95</td>
-              <td><a href="https://www.pishop.us/product/raspberry-pi-5-16gb/">PiShop</a></td>
-              <td>Base board</td>
+              <td class="col-item">Raspberry Pi 5 (16GB) – board</td>
+              <td class="col-price">$119.95</td>
+              <td class="col-store"><a href="https://www.pishop.us/product/raspberry-pi-5-16gb/">PiShop</a></td>
+              <td class="col-notes">Base board</td>
             </tr>
             <tr>
-              <td>Raspberry Pi Active Cooler</td>
-              <td>$10.95</td>
-              <td><a href="https://www.pishop.us/product/raspberry-pi-active-cooler/">PiShop</a></td>
-              <td>Cooling for Pi 5</td>
+              <td class="col-item">Raspberry Pi Active Cooler</td>
+              <td class="col-price">$10.95</td>
+              <td class="col-store"><a href="https://www.pishop.us/product/raspberry-pi-active-cooler/">PiShop</a></td>
+              <td class="col-notes">Cooling for Pi 5</td>
             </tr>
             <tr>
-              <td>SanDisk Extreme Portable SSD V2 1TB</td>
-              <td>$112.80</td>
-              <td><a href="https://www.amazon.com/dp/B08GTYFC37">Amazon</a></td>
-              <td>Primary OS + data drive (boot from SSD)</td>
+              <td class="col-item">SanDisk Extreme Portable SSD V2 1TB</td>
+              <td class="col-price">$112.80</td>
+              <td class="col-store"><a href="https://www.amazon.com/dp/B08GTYFC37">Amazon</a></td>
+              <td class="col-notes">Primary OS + data drive (boot from SSD)</td>
             </tr>
             <tr>
-              <td>Cat8 Ethernet Cable 50ft White/Flat</td>
-              <td>$10.99</td>
-              <td><a href="https://a.co/d/9yHGsrq">Amazon</a></td>
-              <td>50 ft flat run Pi ↔ router/switch</td>
+              <td class="col-item">Cat8 Ethernet Cable 50ft White/Flat</td>
+              <td class="col-price">$10.99</td>
+              <td class="col-store"><a href="https://a.co/d/9yHGsrq">Amazon</a></td>
+              <td class="col-notes">50 ft flat run Pi ↔ router/switch</td>
             </tr>
           </tbody>
         </table>
@@ -87,24 +114,24 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">Item</th>
-              <th scope="col">Price (USD)</th>
-              <th scope="col">Store</th>
-              <th scope="col">Notes</th>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Industrial HMI All-in-one Touch Display for Raspberry Pi, 10.1″ kit</td>
-              <td>$179.95</td>
-              <td><a href="https://www.pishop.us/product/industrial-hmi-all-in-one-touch-display-for-raspberry-pi-10-1inch-dual-4k-hdmi-10-point-touch-aluminum-alloy-case/">PiShop</a></td>
-              <td>Includes 27W PSU + 64GB microSD (future rescue media)</td>
+              <td class="col-item">Industrial HMI All-in-one Touch Display for Raspberry Pi, 10.1″ kit</td>
+              <td class="col-price">$179.95</td>
+              <td class="col-store"><a href="https://www.pishop.us/product/industrial-hmi-all-in-one-touch-display-for-raspberry-pi-10-1inch-dual-4k-hdmi-10-point-touch-aluminum-alloy-case/">PiShop</a></td>
+              <td class="col-notes">Includes 27W PSU + 64GB microSD (future rescue media)</td>
             </tr>
             <tr>
-              <td>HUANUO Single Monitor Mount (13–32″, VESA arm)</td>
-              <td>$35.99</td>
-              <td><a href="https://a.co/d/1mxIhEl">Amazon</a></td>
-              <td>Desk clamp/grommet VESA arm for HMI panel</td>
+              <td class="col-item">HUANUO Single Monitor Mount (13–32″, VESA arm)</td>
+              <td class="col-price">$35.99</td>
+              <td class="col-store"><a href="https://a.co/d/1mxIhEl">Amazon</a></td>
+              <td class="col-notes">Desk clamp/grommet VESA arm for HMI panel</td>
             </tr>
           </tbody>
         </table>
@@ -113,30 +140,30 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">Item</th>
-              <th scope="col">Price (USD)</th>
-              <th scope="col">Store</th>
-              <th scope="col">Notes</th>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Industrial Grade Metal Case (D) for Raspberry Pi 5</td>
-              <td>$12.95</td>
-              <td><a href="https://www.pishop.us/product/industrial-grade-metal-case-d-for-raspberry-pi-5-wall-and-rail-mount/">PiShop</a></td>
-              <td>Metal enclosure; fits future HATs</td>
+              <td class="col-item">Industrial Grade Metal Case (D) for Raspberry Pi 5</td>
+              <td class="col-price">$12.95</td>
+              <td class="col-store"><a href="https://www.pishop.us/product/industrial-grade-metal-case-d-for-raspberry-pi-5-wall-and-rail-mount/">PiShop</a></td>
+              <td class="col-notes">Metal enclosure; fits future HATs</td>
             </tr>
             <tr>
-              <td>Raspberry Pi 27W USB-C Power Supply (Black, US)</td>
-              <td>$12.95</td>
-              <td><a href="https://www.pishop.us/product/raspberry-pi-27w-usb-c-power-supply-black-us/">PiShop</a></td>
-              <td>Official PSU for Pi 5</td>
+              <td class="col-item">Raspberry Pi 27W USB-C Power Supply (Black, US)</td>
+              <td class="col-price">$12.95</td>
+              <td class="col-store"><a href="https://www.pishop.us/product/raspberry-pi-27w-usb-c-power-supply-black-us/">PiShop</a></td>
+              <td class="col-notes">Official PSU for Pi 5</td>
             </tr>
             <tr>
-              <td>UGREEN 4K Micro HDMI to HDMI Cable 3.3FT</td>
-              <td>$9.89</td>
-              <td><a href="https://www.amazon.com/dp/B09DPJRZ42">Amazon</a></td>
-              <td>Micro-HDMI → HDMI; braided</td>
+              <td class="col-item">UGREEN 4K Micro HDMI to HDMI Cable 3.3FT</td>
+              <td class="col-price">$9.89</td>
+              <td class="col-store"><a href="https://www.amazon.com/dp/B09DPJRZ42">Amazon</a></td>
+              <td class="col-notes">Micro-HDMI → HDMI; braided</td>
             </tr>
           </tbody>
         </table>
@@ -145,48 +172,64 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Item</th>
-              <th scope="col">Price (USD)</th>
-              <th scope="col">Store</th>
-              <th scope="col">Notes</th>
+              <th scope="col" class="col-index">#</th>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>1</td>
-              <td>Metal Polyhedral Dice Set (engraved RPG)</td>
-              <td>$45.89</td>
-              <td><a href="https://www.etsy.com/listing/4338881073/engraved-metal-polyhedral-dice-set">Etsy</a></td>
-              <td>Heavy engraved 7-die set; single D&amp;D-adjacent item</td>
+              <td class="col-index">1</td>
+              <td class="col-item">Metal Polyhedral Dice Set (engraved RPG)</td>
+              <td class="col-price">$45.89</td>
+              <td class="col-store"><a href="https://www.etsy.com/listing/4338881073/engraved-metal-polyhedral-dice-set">Etsy</a></td>
+              <td class="col-notes">Heavy engraved 7-die set; single D&amp;D-adjacent item</td>
             </tr>
             <tr>
-              <td>2</td>
-              <td>GN AI Pack</td>
-              <td>$85.00</td>
-              <td><a href="https://store.gamersnexus.net/products/the-overseer-ai-dystopia-series-backer-4hafn-7wxsf">GamersNexus Store</a></td>
-              <td>Medium</td>
+              <td class="col-index">2</td>
+              <td class="col-item">GN AI Pack</td>
+              <td class="col-price">$85.00</td>
+              <td class="col-store"><a href="https://store.gamersnexus.net/products/the-overseer-ai-dystopia-series-backer-4hafn-7wxsf">GamersNexus Store</a></td>
+              <td class="col-notes">Medium</td>
             </tr>
             <tr>
-              <td>3</td>
-              <td>iFixit Mako 64 Bit Driver Kit</td>
-              <td>≈$40–$50</td>
-              <td><a href="https://www.amazon.com/s?k=iFixit+Mako+64+Bit+Driver+Kit">Amazon</a></td>
-              <td>Precision driver + 64 bits for PC/Pi/electronics work</td>
+              <td class="col-index">3</td>
+              <td class="col-item">iFixit Mako 64 Bit Driver Kit</td>
+              <td class="col-price">≈$40–$50</td>
+              <td class="col-store"><a href="https://www.amazon.com/s?k=iFixit+Mako+64+Bit+Driver+Kit">Amazon</a></td>
+              <td class="col-notes">Precision driver + 64 bits for PC/Pi/electronics work</td>
             </tr>
             <tr>
-              <td>4</td>
-              <td>AuspDice D&amp;D Dice Tower Castle (Brushed Brass Color)</td>
-              <td>$45.60</td>
-              <td><a href="https://a.co/d/9qifNQO">Amazon</a></td>
-              <td>Dice tower; pairs well with the metal dice set</td>
+              <td class="col-index">4</td>
+              <td class="col-item">AuspDice D&amp;D Dice Tower Castle (Brushed Brass Color)</td>
+              <td class="col-price">$45.60</td>
+              <td class="col-store"><a href="https://a.co/d/9qifNQO">Amazon</a></td>
+              <td class="col-notes">Dice tower; pairs well with the metal dice set</td>
             </tr>
             <tr>
-              <td>5</td>
-              <td>Aruohhaa D&amp;D Dragon’s Eye Dice Set</td>
-              <td>$23.79</td>
-              <td><a href="https://a.co/d/fpwSr53">Amazon</a></td>
-              <td>Thematic dragon-eye dice set; complements other dice gifts</td>
+              <td class="col-index">5</td>
+              <td class="col-item">Aruohhaa D&amp;D Dragon’s Eye Dice Set</td>
+              <td class="col-price">$23.79</td>
+              <td class="col-store"><a href="https://a.co/d/fpwSr53">Amazon</a></td>
+              <td class="col-notes">Thematic dragon-eye dice set; complements other dice gifts</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Clothing</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-clothes">Clothes</th>
+              <th scope="col" class="col-size">Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-clothes">TBD</td>
+              <td class="col-size">TBD</td>
             </tr>
           </tbody>
         </table>
@@ -194,7 +237,104 @@
 
       <section aria-labelledby="xmas-section-2-heading">
         <h2 id="xmas-section-2-heading">&lt;RECIPIENT_NAME_2&gt;</h2>
-        <p>TODO: add items for this recipient.</p>
+
+        <h3>Core (always included)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-item">TBD</td>
+              <td class="col-price">TBD</td>
+              <td class="col-store">TBD</td>
+              <td class="col-notes">TBD</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Option Group 1 – HMI Kit Configuration</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-item">TBD</td>
+              <td class="col-price">TBD</td>
+              <td class="col-store">TBD</td>
+              <td class="col-notes">TBD</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Option Group 2 – Industrial Case Configuration</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-item">TBD</td>
+              <td class="col-price">TBD</td>
+              <td class="col-store">TBD</td>
+              <td class="col-notes">TBD</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Other Gifts (non-Pi)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-index">#</th>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-index">1</td>
+              <td class="col-item">TBD</td>
+              <td class="col-price">TBD</td>
+              <td class="col-store">TBD</td>
+              <td class="col-notes">TBD</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Clothing</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-clothes">Clothes</th>
+              <th scope="col" class="col-size">Size</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-clothes">TBD</td>
+              <td class="col-size">TBD</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
     </main>
 
