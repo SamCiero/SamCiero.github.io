@@ -6,11 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="/assets/site.css">
+
+    <style>
+      /* Page-local layout tweaks for this hidden page */
+      #site-header {
+        display: none;
+      }
+
+      #content.xmaslist-wide {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.5rem 1.25rem 2.5rem;
+      }
+
+      #content.xmaslist-wide table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      #content.xmaslist-wide th,
+      #content.xmaslist-wide td {
+        padding: 0.4rem 0.6rem;
+        border-bottom: 1px solid var(--border, #333);
+        vertical-align: top;
+      }
+
+      #content.xmaslist-wide th {
+        text-align: left;
+      }
+    </style>
   </head>
   <body>
     <header id="site-header"></header>
 
-    <main id="content">
+    <main id="content" class="xmaslist-wide">
       <h1>Christmas List</h1>
 
       <section aria-labelledby="xmas-section-1-heading">
