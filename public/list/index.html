@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en" data-page="personal-wishlist">
+  <head>
+    <meta charset="utf-8">
+    <title>Gift List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="/assets/site.css">
+
+    <style>
+      /* Page-local layout tweaks for this page */
+      #site-header {
+        display: none;
+      }
+
+      #content.list-wide {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1.5rem 1.25rem 2.5rem;
+      }
+
+      #content.list-wide table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      #content.list-wide th,
+      #content.list-wide td {
+        padding: 0.4rem 0.6rem;
+        border-bottom: 1px solid var(--border, #333);
+        vertical-align: top;
+      }
+
+      #content.list-wide th {
+        text-align: left;
+      }
+
+      /* Space between recipient subsections */
+      #content.list-wide section + section {
+        margin-top: 3rem;
+        padding-top: 3rem;
+      }
+
+      /* Column sizing/alignment */
+      #content.list-wide .col-index {
+        width: 4ch;
+        text-align: right;
+      }
+
+      #content.list-wide .col-item {
+        width: 46%;
+      }
+
+      #content.list-wide .col-price {
+        width: 11%;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      #content.list-wide .col-store {
+        width: 15%;
+      }
+
+      #content.list-wide .col-notes {
+        width: 28%;
+      }
+
+      /* Clothes/size can float; no special widths needed */
+    </style>
+  </head>
+  <body>
+    <header id="site-header"></header>
+
+    <main id="content" class="list-wide">
+      <h1>Wish List</h1>
+
+        <h3>Core List</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-index">#</th>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-index">1</td>
+              <td class="col-item">Holosun 507C X3 GD</td>
+              <td class="col-price">$352.93</td>
+              <td class="col-store"><a href="https://www.holosun.com/products/pistol-sights/507c-x3/hs507c-x3-gd-mrs.html">Holosun</a></td>
+              <td class="col-notes">Gold reticle, MOA 2</td>
+            </tr>
+            <tr>
+              <td class="col-index">2</td>
+              <td class="col-item">Holosun P.ID HC</td>
+              <td class="col-price">$199.99</td>
+              <td class="col-store"><a href="https://www.holosun.com/products/laser-weaponlights/p.id-weaponlight-series/p.id-hc.html">Holosun</a></td>
+              <td class="col-notes">High:800L/42,000C/30M | Low:400L/21,000C/60M
+            <tr>
+              <td class="col-index">3</td>
+              <td class="col-item">SanDisk Extreme Portable SSD V2 1TB</td>
+              <td class="col-price">$112.80</td>
+              <td class="col-store"><a href="https://www.amazon.com/dp/B08GTYFC37">Amazon</a></td>
+              <td class="col-notes">Primary OS + data drive (boot from SSD)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Clothing</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-clothes">Clothes</th>
+              <th scope="col" class="col-size">Sizes</th>
+              <th scope="col" class="col-note">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-clothes">Shirt</td>
+              <td class="col-size">Medium</td>
+              <td class="col-note">Large if they run small</td>
+            </tr>
+            <tr>
+              <td class="col-clothes">Pants</td>
+              <td class="col-size">30x30</td>
+              <td class="col-note">Prefer straight-cut</td>
+            </tr>
+            <tr>
+              <td class="col-clothes">Shoes</td>
+              <td class="col-size">10 - 10.5</td>
+              <td class="col-note">10.5 if they run small</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="xmas-section-2-heading">
+        <h2 id="xmas-section-2-heading">GEORGIA'S LIST</h2>
+
+        <h3>Core List</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-index">#</th>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-index">1</td>
+              <td class="col-item">Candles</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">Bakery Scents</td>
+            </tr>
+            <tr>
+              <td class="col-index">2</td>
+              <td class="col-item">Dainty Decor</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">I love cat decor</td>
+            </tr>
+            <tr>
+              <td class="col-index">3</td>
+              <td class="col-item">Soap</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">Hand/Body</td>
+            </tr>
+            <tr>
+              <td class="col-index">4</td>
+              <td class="col-item">Lotion</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">Hand/Face/Body</td>
+            </tr>
+            <tr>
+              <td class="col-index">5</td>
+              <td class="col-item">Hair Products</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">Products/Accessories</td>
+            </tr>
+            <tr>
+              <td class="col-index">6</td>
+              <td class="col-item">Perfume/Body Spray</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">Chanel CHANCE EAU TENDRE</td>
+            </tr>
+            <tr>
+              <td class="col-index">7</td>
+              <td class="col-item">Dainty Jewelry</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">Silver</td>
+            </tr>
+            <tr>
+              <td class="col-index">8</td>
+              <td class="col-item">Purse</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">Michael Kors</td>
+            </tr>
+            <tr>
+              <td class="col-index">9</td>
+              <td class="col-item">Throw Blanket</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">--</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Extra List</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-index">#</th>
+              <th scope="col" class="col-item">Item</th>
+              <th scope="col" class="col-price">Price (USD)</th>
+              <th scope="col" class="col-store">Store</th>
+              <th scope="col" class="col-notes">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-index">1</td>
+              <td class="col-item">Gift Cards</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">Amazon / TJ Max / AE / Ulta</td>
+            </tr>
+            <tr>
+              <td class="col-index">2</td>
+              <td class="col-item">Cat-related Stuff</td>
+              <td class="col-price">--</td>
+              <td class="col-store">--</td>
+              <td class="col-notes">--</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Clothing</h3>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col" class="col-clothes">Clothes</th>
+              <th scope="col" class="col-size">Sizes</th>
+              <th scope="col" class="col-note">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-clothes">Dress</td>
+              <td class="col-size">Small</td>
+              <td class="col-note">--</td>
+            </tr>
+            <tr>
+              <td class="col-clothes">Sweaters</td>
+              <td class="col-size">Small</td>
+              <td class="col-note">--</td>
+            </tr>
+            <tr>
+              <td class="col-clothes">Shirt</td>
+              <td class="col-size">Small</td>
+              <td class="col-note">Medium if they run small</td>
+            </tr>
+            <tr>
+              <td class="col-clothes">Pants</td>
+              <td class="col-size">4 Short</td>
+              <td class="col-note">American Eagle only</td>
+            </tr>
+            <tr>
+              <td class="col-clothes">Shoes</td>
+              <td class="col-size">7 - 7.5</td>
+              <td class="col-note">7.5 if they run small</td>
+            </tr>
+            <tr>
+              <td class="col-clothes">Pajamas</td>
+              <td class="col-size">Small</td>
+              <td class="col-note">--</td>
+            </tr>
+            <tr>
+              <td class="col-clothes">Socks</td>
+              <td class="col-size">7 - 7.5</td>
+              <td class="col-note">--</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script type="module" src="/assets/boot.js"></script>
+  </body>
+</html>
